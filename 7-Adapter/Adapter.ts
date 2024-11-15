@@ -32,8 +32,15 @@ class Adapter implements Tasker {
   }
 }
 
+class MostDoThis extends NoOneKnowsWhatThisDoes implements Tasker {
+  execute(): string {
+    return this.run().join('');
+  }
+}
+
 (() => {
   const job = new Job();
   job.start(new OurTask());
   job.start(new Adapter(new NoOneKnowsWhatThisDoes()));
+  job.start(new MostDoThis());
 })();
