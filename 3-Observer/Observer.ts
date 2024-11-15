@@ -12,8 +12,6 @@ class Observable {
   }
 
   remove(observer: Observer) {
-    this.observers
-
     const index = this.observers.indexOf(observer);
 
     if (index > -1) { 
