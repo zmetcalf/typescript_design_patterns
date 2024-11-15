@@ -44,5 +44,5 @@ class ConcreteTwo extends AbstractedClass {
 (() => {
   new ConcreteOne().templateMethod()
   new ConcreteTwo().templateMethod()
-})()
+})();
 
