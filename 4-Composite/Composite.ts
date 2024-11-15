@@ -1,5 +1,6 @@
 class Task {
   name: string;
+  parent?: Task;
 
   constructor(name: string) {
     this.name = name;
@@ -16,6 +17,7 @@ class LongTask extends Task {
   }
 
   getTime(): number {
+    console.log(LongTask.name, 'parent', this.parent?.name);
     return 30;
   }
 }
@@ -26,6 +28,7 @@ class ShortTask extends Task {
   }
 
   getTime(): number {
+    console.log(ShortTask.name, 'parent', this.parent?.name);
     return 1;
   }
 }
@@ -39,6 +42,7 @@ class ParentTask extends Task {
 
   addTask(task: Task) {
     this.tasks.push(task);
+    task.parent = this;
     return this;
   }
 
@@ -48,6 +52,9 @@ class ParentTask extends Task {
     if (index > -1) { 
       this.tasks.splice(index, 1); 
     }
+
+    task.parent = undefined;
+
     return this;
   }
 
